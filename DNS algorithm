@@ -1,0 +1,34 @@
+#include<stdio.h>
+void swap(int a[],int i,int j){
+	int temp;
+	temp=a[i];
+	a[i]=a[j];
+	a[j]=temp;
+}
+int dnf(int a[], int end){
+	int start=0;
+	int mid=0;
+	int tem=1;
+	while(mid!=end){
+	if(a[mid]>tem){
+		swap(a,mid,end);
+		end--;
+	}
+	else if(a[mid]<tem){
+		swap(a,mid,start);
+		start++;
+		mid++;
+	}
+	else mid++;
+	}
+	return 0; 
+}
+int main(){
+	int a[]={0,2,1,2,1,1,0,0,2},i;
+	int end=(sizeof(a)/sizeof(a[0]))-1;
+	dnf(a, end);
+	for(i=0;i<=end;i++){
+		printf("%d",a[i]);
+	}
+	return 0;
+}
